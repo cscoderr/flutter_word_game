@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class ArrowPage extends StatelessWidget {
@@ -36,42 +38,43 @@ class ArrowPainter extends CustomPainter {
 
     if (offsets != null) {
       if (offsets!['option1'] != null) {
-        path.moveTo(offsets!['option1']!['start']!.dx,
-            offsets!['option1']!['start']!.dy);
-
-        path.lineTo(
+        path.moveTo(
           offsets!['option1']!['start']!.dx,
-          offsets!['option1']!['start']!.dy,
-          // offsets!['option1']!['end']!.dx,
-          // offsets!['option1']!['end']!.dy,
-          // 1.0,
-        );
-        path.lineTo(
-          offsets!['option1']!['end']!.dx,
           offsets!['option1']!['end']!.dy,
-          // offsets!['option1']!['end']!.dx,
-          // offsets!['option1']!['end']!.dy,
-          // 1.0,
         );
+        // path.quadraticBezierTo(
+        //   offsets!['option1']!['start']!.dx,
+        //   offsets!['option1']!['start']!.dy,
+        //   offsets!['option1']!['end']!.dx,
+        //   offsets!['option1']!['end']!.dy,
+        // );
+        canvas.drawPoints(
+            PointMode.polygon,
+            [
+              Offset(offsets!['option1']!['start']!.dx,
+                  offsets!['option1']!['start']!.dy),
+              Offset(offsets!['option1']!['end']!.dx,
+                  offsets!['option1']!['end']!.dy),
+              Offset(361.0, 234.0),
+              Offset(371.3, 212.7),
+            ],
+            paint);
       }
 
       if (offsets!['option2'] != null) {
-        path.quadraticBezierTo(
-          offsets!['option1']!['start']!.dx,
-          offsets!['option1']!['start']!.dy,
-          offsets!['option2']!['end']!.dx,
-          offsets!['option2']!['end']!.dy,
-        );
+        canvas.drawPoints(
+            PointMode.polygon,
+            [
+              Offset(offsets!['option2']!['start']!.dx,
+                  offsets!['option2']!['start']!.dy),
+              Offset(offsets!['option2']!['end']!.dx,
+                  offsets!['option2']!['end']!.dy),
+            ],
+            paint);
       }
-      // if (offsets!['option2'] != null) {
-      //   path.quadraticBezierTo(
-      //     offsets!['option1']!['end']!.dx,
-      //     offsets!['option1']!['end']!.dy,
-      //     offsets!['option2']!['end']!.dx,
-      //     offsets!['option2']!['end']!.dy,
-      //   );
-      // }
     }
+    // path.moveTo(50, 50);
+    // path.quadraticBezierTo(90, 200, 50, 120);
     canvas.drawPath(path, paint);
   }
 

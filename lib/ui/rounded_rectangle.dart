@@ -6,13 +6,13 @@ class RoundedRectangle extends StatelessWidget {
     this.onStart,
     this.onDrag,
     this.onEnd,
-    required this.letters,
+    required this.letter,
   }) : super(key: key);
 
   final ValueChanged<DragUpdateDetails>? onDrag;
   final ValueChanged<DragStartDetails>? onStart;
   final ValueChanged<DragEndDetails>? onEnd;
-  final List<String> letters;
+  final String letter;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class RoundedRectangle extends StatelessWidget {
         ),
         alignment: Alignment.center,
         child: Text(
-          letters[2],
+          letter,
           style: Theme.of(context).textTheme.headline4?.copyWith(
                 fontWeight: FontWeight.bold,
               ),

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:word_game/ui/ui.dart';
 
@@ -10,12 +12,14 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Map<String, Map<String, Offset?>>? offsets;
+  late List<Offset> offset2;
   late List<String> letters;
 
   @override
   void initState() {
     super.initState();
     offsets = {};
+    offset2 = [];
     letters = [
       'A',
       'B',
@@ -66,14 +70,14 @@ class _HomePageState extends State<HomePage> {
                   left: MediaQuery.of(context).size.width / 2.4,
                   right: MediaQuery.of(context).size.width / 2.4,
                   child: RoundedRectangle(
-                    letters: letters,
+                    letter: letters[Random().nextInt(26)],
                   ),
                 ),
                 Positioned(
                   top: MediaQuery.of(context).padding.top + 150,
                   left: 20,
                   child: RoundedRectangle(
-                    letters: letters,
+                    letter: letters[Random().nextInt(26)],
                     onStart: (DragStartDetails details) {
                       final renderBox = context.findRenderObject() as RenderBox;
                       setState(() {
@@ -128,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                   top: MediaQuery.of(context).padding.top + 150,
                   right: 20,
                   child: RoundedRectangle(
-                    letters: letters,
+                    letter: letters[Random().nextInt(26)],
                     onStart: (DragStartDetails details) {
                       print("=====reach option 2 here");
                       final renderBox = context.findRenderObject() as RenderBox;
@@ -161,14 +165,14 @@ class _HomePageState extends State<HomePage> {
                   bottom: MediaQuery.of(context).padding.bottom,
                   left: 90,
                   child: RoundedRectangle(
-                    letters: letters,
+                    letter: letters[Random().nextInt(26)],
                   ),
                 ),
                 Positioned(
                   bottom: MediaQuery.of(context).padding.bottom,
                   right: 90,
                   child: RoundedRectangle(
-                    letters: letters,
+                    letter: letters[Random().nextInt(26)],
                   ),
                 ),
               ],
